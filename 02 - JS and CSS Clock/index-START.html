@@ -18,7 +18,7 @@
 
   <style>
     html {
-      background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
+      background:#018DED url(https://images.pexels.com/photos/713664/pexels-photo-713664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
       background-size:cover;
       font-family:'helvetica neue';
       text-align: center;
@@ -37,16 +37,11 @@
     .clock {
       width: 30rem;
       height: 30rem;
-      border:20px solid white;
+      border:5px solid #c40018;
       border-radius:50%;
       margin:50px auto;
       position: relative;
       padding:2rem;
-      box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
     }
 
     .clock-face {
@@ -58,8 +53,7 @@
 
     .hand {
       width:50%;
-      height:6px;
-      background:black;
+      background:white;
       position: absolute;
       top:50%;
       transform-origin: 100%;
@@ -67,6 +61,20 @@
       transition: 0.05s;
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
+
+    .hour-hand{
+      height:8px;
+    }
+
+    .min-hand{
+      height:5px;
+    }
+
+    .second-hand{
+      height:2px;
+    }
+
+
 
   </style>
 
