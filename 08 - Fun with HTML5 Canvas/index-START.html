@@ -7,6 +7,64 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+
+
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx.strokeStyle = '#BADA55';
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 50;
+  let hue = 0; // variable that set the color at beginning
+  let direction = true;
+  ctx.globalCompositeOperation = 'overlay'; // color effect see : https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+
+
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  function draw(e) {
+    if (!isDrawing) return; // stop the function running when not moused down
+    // console.log(e);
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; // set the color hsl style
+    ctx.beginPath();
+    // start from
+    ctx.moveTo(lastX, lastY);
+    // go to
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    hue++; // increment the color value
+
+    if (hue >= 360) {
+      hue = 0;
+    } // reset the value of the color when over the mx val of 360
+
+    if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1) {
+      direction = !direction; // change the line width;
+    }
+
+    if(direction) {
+      ctx.lineWidth++; // width bigger
+    } else {
+      ctx.lineWidth--; // width smaller
+    }
+
+  };
+
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  canvas.addEventListener('mouseout', () => isDrawing = false);
+
 </script>
 
 <style>
