@@ -18,28 +18,57 @@
     }
 
     // Regular
+    console.log("hello");
 
     // Interpolated
+    console.log("hello i'm a %s", '💩💩');
+    const s = "prout";
+    console.log(`hello i'm a ${s}`);
 
     // Styled
+    console.log("%c i'm a text", 'font-size : 50px; color: blue');
+
 
     // warning!
+    console.warn ('noooooo');
 
     // Error :|
+    console.error('shit');
 
     // Info
+    console.info('blabla');
 
     // Testing
+    console.assert(1 === 2, 'that wronng');
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(` this is ${dog.name}`);
+      // console.collapse(` this is ${dog.name}`);
+      console.log(`${dog.age} is years old`);
+      console.log(`${dog.age * 7 } is years old in dog years`);
+      console.groupEnd(` this is ${dog.name}`);
+    })
 
     // counting
+    console.count('bla');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/xelaflash')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('fetching data');
+      console.log(data);
+    });
 
   </script>
 </body>
