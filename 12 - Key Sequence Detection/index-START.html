@@ -7,6 +7,27 @@
 </head>
 <body>
 <script>
+
+// array pour stocker les touches enfoncés
+const pressed = [];
+
+const secretCode = 'easter';
+
+// on ecoute les touches enfoncées
+window.addEventListener('keyup', (e) => {
+  console.log(e.key);
+  // met les key ds l'array
+  pressed.push(e.key);
+  // eavlue le bre de de touche et du mot secret
+  pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+  //mets l'array en string et evalue si match le mot secret
+  if (pressed.join('').includes(secretCode)) {
+    console.log('Easter egg found!');
+    // ajoute une connerie via le site cornify.js
+    cornify_add();
+  }
+  console.log(pressed);
+});
 </script>
 </body>
 </html>
