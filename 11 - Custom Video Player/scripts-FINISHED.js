@@ -39,7 +39,7 @@ function scrub(e) {
 
 /* Hook up the event listeners */
 video.addEventListener('click', togglePlay);
-video.addEventListener('play', updateButton);
+/* Build out functions */
 video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 
