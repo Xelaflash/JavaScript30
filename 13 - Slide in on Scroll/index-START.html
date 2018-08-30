@@ -43,6 +43,7 @@
   </div>
 
   <script>
+    // fonction qui permet limiter de run le listener du scroll // ici tte les 20 mllsec
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -57,6 +58,35 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+
+    // on chope les images
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+
+    //
+    function checkSlide(e) {
+      console.log(e);
+      sliderImages.forEach(sliderImage => {
+        // half way through the image  / calcule le nbr de pixels du scroll
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        // bottom of the image
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        } else {
+          sliderImage.classList.remove('active');
+        }
+      });
+    };
+
+    // on ecoute le scroll et applique la fonction
+    window.addEventListener('scroll', debounce(checkSlide));
+
+
+
 
   </script>
 
