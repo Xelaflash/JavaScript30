@@ -14,7 +14,7 @@ function getVideo() {
     .catch(err => {
       console.error(`OH NO!!!`, err);
     });
-}
+};
 
 function paintToCanvas() {
   const width = video.videoWidth;
